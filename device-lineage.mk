@@ -4,6 +4,16 @@
 # SPDX-License-Identifier: Apache-2.0
 #
 
+# ART
+ART_BUILD_HOST_DEBUG := false
+ART_BUILD_HOST_NDEBUG := true
+ART_BUILD_TARGET_DEBUG := false
+ART_BUILD_TARGET_NDEBUG := true
+PRODUCT_ALWAYS_PREOPT_EXTRACTED_APK := true
+PRODUCT_ART_TARGET_INCLUDE_DEBUG_BUILD := false
+PRODUCT_MINIMIZE_JAVA_DEBUG_INFO := true
+PRODUCT_SYSTEM_SERVER_COMPILER_FILTER := speed-profile
+
 # Dalvik
 $(call inherit-product, frameworks/native/build/phone-xhdpi-6144-dalvik-heap.mk)
 
