@@ -4,6 +4,9 @@
 # SPDX-License-Identifier: Apache-2.0
 #
 
+# Build hacks
+DISABLE_ARTIFACT_PATH_REQUIREMENTS := true
+RELAX_USES_LIBRARY_CHECK := true
 BUILD_BROKEN_DUP_RULES := true
 
 # Kernel

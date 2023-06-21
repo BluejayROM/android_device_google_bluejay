@@ -14,11 +14,47 @@
 # limitations under the License.
 #
 
+# Use scudo
+PRODUCT_USE_SCUDO := true
+
+# Inherit some common AOSP stuff.
+TARGET_DISABLE_EPPE := true
+$(call inherit-product, vendor/aosp/config/common_full_phone.mk)
+
 $(call inherit-product, device/google/gs101/aosp_common.mk)
 $(call inherit-product, device/google/bluejay/device-bluejay.mk)
+$(call inherit-product, device/google/gs101/lineage_common.mk)
+$(call inherit-product, device/google/bluejay/device-lineage.mk)
 
 PRODUCT_NAME := aosp_bluejay
 PRODUCT_DEVICE := bluejay
-PRODUCT_MODEL := AOSP on Bluejay
-PRODUCT_BRAND := Android
+PRODUCT_MODEL := Pixel 6a
+PRODUCT_BRAND := google
 PRODUCT_MANUFACTURER := Google
+
+# Boot animation
+TARGET_SCREEN_HEIGHT := 2400
+TARGET_SCREEN_WIDTH := 1080
+TARGET_BOOT_ANIMATION_RES := 1080
+
+# Gapps
+TARGET_GAPPS_ARCH := arm64
+
+# Pixel Based ROM Stuff
+IS_PHONE := true
+TARGET_SUPPORTS_QUICK_TAP := true
+TARGET_SUPPORTS_GOOGLE_RECORDER := true
+TARGET_INCLUDE_STOCK_ACORE := false
+TARGET_INCLUDE_LIVE_WALLPAPERS := true
+TARGET_FACE_UNLOCK_SUPPORTED := true
+TARGET_SUPPORTS_GOOGLE_CAMERA := true
+EXTRA_UDFPS_ANIMATIONS := true
+TARGET_USES_AOSP_RECOVERY := true
+
+PRODUCT_BUILD_PROP_OVERRIDES += \
+    TARGET_PRODUCT=bluejay \
+    PRIVATE_BUILD_DESC="bluejay-user 13 230505.002 9891397 release-keys"
+
+BUILD_FINGERPRINT := google/bluejay/bluejay:13/TQ2A.230505.002/9891397:user/release-keys
+
+$(call inherit-product, vendor/google/bluejay/bluejay-vendor.mk)
